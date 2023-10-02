@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <cassert>
 #include <comdef.h>
+#include <cstdint>
 
 #include "TextureConverter.h"
 
@@ -14,7 +15,7 @@ enum Argument {
 
 int main(int argc,char* argv[]) {
 
-	for (int i = 0; i < argc; i++) {
+	for (uint32_t i = 0; i < argc; i++) {
 		printf(argv[i]);
 		//改行
 		printf("\n");
@@ -23,8 +24,8 @@ int main(int argc,char* argv[]) {
 	assert(argc >= NumArgument);
 
 	//ライブラリの初期化
-	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
-	assert(SUCCEEDED(hr));
+	HRESULT result = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+	assert(SUCCEEDED(result));
 
 	//テクスチャコンバータ
 	TextureConverter converter;
