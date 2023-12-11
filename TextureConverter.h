@@ -15,12 +15,19 @@ private:
 	std::wstring fileName_;
 	//ファイル拡張子
 	std::wstring fileExt_;
+	//ミップレベル
+	size_t mipLevel_ = 0;
 public:
 	/// <summary>
 	/// テクスチャをWICからDDSに変換する
 	/// </summary>
 	/// <param name="filePath">ファイルパス</param>
-	void ConvertTextureWICToDDS(const std::string& filePath);
+	/// <param name="numOptions">おぶしょんの数</param>
+	/// <param name="filePath">オプション配列</param>
+	void ConvertTextureWICToDDS(const std::string& filePath,
+		int numOptions = 0,char* options[] = nullptr);
+
+	static void OutputUsage();
 private:
 	/// <summary>
 	/// テクスチャファイル読み込み
@@ -35,7 +42,7 @@ private:
 	/// <summary>
 	/// DDSテクスチャとしてファイル書き出し
 	/// </summary>
-	void SaveDDSTextureToFile();
+	void SaveDDSTextureToFile(int numOptions, char* options[]);
 
 	static std::wstring ConvertMultiByteStringToWideString(const std::string& mString);
 };
